@@ -1,0 +1,59 @@
+{
+  "name": "checkout-frames-react",
+  "version": "0.0.1",
+  "description": "Checkout's Frames.js react-component wrapper.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run storybook",
+    "test": "react-scripts test",
+    "build": "NODE_ENV=production webpack",
+    "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artemtam/checkout-frames-react.git"
+  },
+  "author": "Artem Tamoian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artemtam/checkout-frames-react/issues"
+  },
+  "homepage": "https://github.com/artemtam/checkout-frames-react#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.8.0",
+    "@tippy.js/react": "^3.1.1",
+    "@types/react": "^16.9.17",
+    "@types/react-test-renderer": "^16.9.1",
+    "@types/storybook__react": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "react": "^16.12.0",
+    "react-scripts": "^3.3.0",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.0",
+    "@storybook/addon-actions": "^5.3.1",
+    "@storybook/addon-info": "^5.3.1",
+    "@storybook/addon-knobs": "^5.3.1",
+    "@storybook/addons": "^5.3.1",
+    "@storybook/react": "^5.3.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint-plugin-flowtype": "^4.6.0",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "react-scripts": "^3.2.0",
+    "react-test-renderer": "^16.12.0",
+    "webpack-cli": "^3.3.10"
+  }
+}
