@@ -8,6 +8,7 @@ interface CheckoutFormProps extends FramesInitProps {
     onCardValidationChanged?: (isValid: boolean) => void;
     onCardTokenized?: (token: string) => void;
     onCardTokenizationFailed?: () => void;
+    className?: string; // form className
 }
 
 class CheckoutForm extends Component<CheckoutFormProps> {
@@ -68,7 +69,7 @@ class CheckoutForm extends Component<CheckoutFormProps> {
   }
 
   render(): JSX.Element {
-    const { children } = this.props;
+    const { children, className } = this.props;
 
     return (
       <form
@@ -77,6 +78,7 @@ class CheckoutForm extends Component<CheckoutFormProps> {
           e.preventDefault();
           window.Frames.submitCard();
         }}
+        className={classNames(className)}
       >
         {children}
       </form>
