@@ -4,20 +4,12 @@ node_js:
 cache:
   directories:
     - node_modules
-jobs:
-  include:
-    - stage: Lint
-      script: npm run lint
-    - stage: Typecheck
-      script: npm run typecheck
-    - stage: Build storybook
-      script: npm run build-storybook
-    - stage: Deploy
-      script: skip
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: $github_token
-        local_dir: storybook-static
-        on:
-          branch: master
+script:
+  - npm run build-storybook
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: storybook-static
+  on:
+    branch: master
