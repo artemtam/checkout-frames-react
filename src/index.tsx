@@ -115,4 +115,5 @@ export const CVVFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   />
 );
 
+export * from './types';
 export default CheckoutForm;

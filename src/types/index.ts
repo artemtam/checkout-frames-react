@@ -13,6 +13,13 @@ export interface FramesEvents {
     CARD_TOKENIZATION_FAILED: 'cardTokenizationFailed';
 }
 
+export interface FramesCustomLocalization {
+    cardNumberPlaceholder: string;
+    expiryMonthPlaceholder: string;
+    expiryYearPlaceholder: string;
+    cvvPlaceholder: string;
+}
+
 export type FramesSupportedLanguage =
     'EN-GB'
     | 'ES-ES'
@@ -50,7 +57,7 @@ export interface FramesInitProps {
     debug?: boolean;
     namespace?: string;
     frameSelector?: null;
-    localization?: FramesSupportedLanguage;
+    localization?: FramesSupportedLanguage | FramesCustomLocalization;
     style?: FramesStyle;
 }
 
