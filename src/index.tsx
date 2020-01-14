@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
-import { FramesInitProps } from 'types';
+import { FramesInitProps } from './types';
 
 interface CheckoutFormProps extends FramesInitProps {
     onCardSubmitted?: () => void;
