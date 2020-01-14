@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 
 function loadStories() {
-  require('../src/index.story');
+  require('../src/example/index.story');
 }
 
 addDecorator(withInfo);

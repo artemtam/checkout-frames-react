@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 import { FramesInitProps } from 'types';
 
@@ -13,9 +14,9 @@ class CheckoutForm extends Component<CheckoutFormProps> {
   componentDidMount(): void {
     const {
       publicKey,
-      debug,
-      namespace,
-      localization,
+      debug = false,
+      namespace = 'Frames',
+      localization = 'EN-GB',
       style,
       onCardValidationChanged,
       onCardSubmitted,
@@ -40,6 +41,8 @@ class CheckoutForm extends Component<CheckoutFormProps> {
     if (onCardSubmitted) {
       window.Frames.addEventHandler(window.Frames.Events.CARD_SUBMITTED, () => {
         onCardSubmitted();
+
+        // Re-enables form after submit (helpful when submitting failed)
         setTimeout(() => window.Frames.enableSubmitForm(), 300);
       });
     }
@@ -65,6 +68,8 @@ class CheckoutForm extends Component<CheckoutFormProps> {
   }
 
   render(): JSX.Element {
+    const { children } = this.props;
+
     return (
       <form
         id="payment-form"
@@ -73,13 +78,41 @@ class CheckoutForm extends Component<CheckoutFormProps> {
           window.Frames.submitCard();
         }}
       >
-        <div className="card-number-frame" />
-        <div className="expiry-date-frame" />
-        <div className="cvv-frame" />
+        {children}
       </form>
     );
   }
 }
 
+export const CardNumberFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}) => (
+  <div
+    className={classNames('card-number-frame', className)}
+    {...props}
+  />
+);
+
+
+export const ExpiryDateFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}) => (
+  <div
+    className={classNames('expiry-date-frame', className)}
+    {...props}
+  />
+);
+
+export const CVVFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}) => (
+  <div
+    className={classNames('cvv-frame', className)}
+    {...props}
+  />
+);
 
 export default CheckoutForm;

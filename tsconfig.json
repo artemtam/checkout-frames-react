@@ -3,6 +3,7 @@
     "outDir": "lib",
     "module": "esnext",
     "target": "es5",
+    "baseUrl": "src",
     "lib": [
       "esnext",
       "dom"
@@ -14,7 +15,6 @@
     "rootDirs": [
       "src"
     ],
-    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
