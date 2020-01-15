@@ -1,4 +1,4 @@
-# checkout-frames-react
+# checkout-frames-react [![Build Status](https://travis-ci.org/artemtam/checkout-frames-react.svg?branch=master)](https://travis-ci.org/artemtam/checkout-frames-react)
 
 React component wrapping [Frames.js by Checkout.com](https://docs.checkout.com/docs/frames). It will help you a lot, in case you integrate Checkout.com payment provider into you React app.
 
