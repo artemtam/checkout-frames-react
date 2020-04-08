@@ -63,3 +63,4 @@ typings/
 .idea
 storybook-static
 dist
+.rts*
