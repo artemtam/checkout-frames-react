@@ -1,6 +1,6 @@
 {
   "name": "checkout-frames-react",
-  "version": "0.0.3",
+  "version": "1.0.0-0",
   "description": "Checkout's Frames.js react-component wrapper.",
   "private": false,
   "main": "dist/index.js",
