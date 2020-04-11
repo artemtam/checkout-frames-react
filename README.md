@@ -1,4 +1,4 @@
-# checkout-frames-react [![Build Status](https://travis-ci.org/artemtam/checkout-frames-react.svg?branch=master)](https://travis-ci.org/artemtam/checkout-frames-react)
+# checkout-frames-react ![Downloads](https://badgen.net/npm/dt/checkout-frames-react) ![Minified and zipped size](https://badgen.net/bundlephobia/minzip/checkout-frames-react)
 
 A wrapper [Frames.js by Checkout.com](https://docs.checkout.com/docs/frames) covering Frames.js with types and clean API. 
 
@@ -8,54 +8,7 @@ A wrapper [Frames.js by Checkout.com](https://docs.checkout.com/docs/frames) cov
 
 ## Example
 
-Here is a Checkout.com official documentation example of the Frames.js usage:
-
-```html
-<form id="payment-form" method="POST" action="https://merchant.com/charge-card">
-    <div class="one-liner">
-      <div class="card-frame">
-        <!-- form will be added here -->
-      </div>
-      <!-- add submit button -->  
-      <button id="pay-button" disabled>
-        PAY GBP 24.99
-      </button>
-    </div>
-    <p class="success-payment-message"></p>
-  </form>
-
-  <script>
-    var payButton = document.getElementById("pay-button");
-    var form = document.getElementById("payment-form");
-
-    Frames.init("pk_test_6ff46046-30af-41d9-bf58-929022d2cd14");
-
-    Frames.addEventHandler(
-      Frames.Events.CARD_VALIDATION_CHANGED,
-      function (event) {
-        console.log("CARD_VALIDATION_CHANGED: %o", event);
-
-        payButton.disabled = !Frames.isCardValid();
-      }
-    );
-
-    Frames.addEventHandler(
-      Frames.Events.CARD_TOKENIZED,
-      function (event) {
-        var el = document.querySelector(".success-payment-message");
-        el.innerHTML = "Card tokenization completed<br>" +
-          "Your card token is: <span class=\"token\">" + event.token + "</span>";
-      }
-    );
-
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      Frames.submitCard();
-    });
-  </script>
-```
-
-Similar example on React.js with `checkout-frames-react`:
+Here is an example similar to [Checkout.com official documentation](https://docs.checkout.com/docs/frames#section-add-the-code-snippet-to-your-site) with `checkout-frames-react`:
 
 ```typescript jsx
 import React, { useState } from 'react';
