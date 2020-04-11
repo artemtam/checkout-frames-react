@@ -1,36 +1,75 @@
 # checkout-frames-react [![Build Status](https://travis-ci.org/artemtam/checkout-frames-react.svg?branch=master)](https://travis-ci.org/artemtam/checkout-frames-react)
 
-React component wrapping [Frames.js by Checkout.com](https://docs.checkout.com/docs/frames). It will help you a lot, in case you integrate Checkout.com payment provider into you React app.
-
-## Features 
+A wrapper [Frames.js by Checkout.com](https://docs.checkout.com/docs/frames) covering Frames.js with types and clean API. 
 
 - [x] Written on TypeScript
 - [x] Covers 100% of Frames.js with types
-- [x] Zero-dependencies
+- [x] Light, zero dependencies
 
-## Usage
+## Example
 
-To install the package run `npm i checkout-frames-react`.
+Here is a Checkout.com official documentation example of the Frames.js usage:
 
-### Example
+```html
+<form id="payment-form" method="POST" action="https://merchant.com/charge-card">
+    <div class="one-liner">
+      <div class="card-frame">
+        <!-- form will be added here -->
+      </div>
+      <!-- add submit button -->  
+      <button id="pay-button" disabled>
+        PAY GBP 24.99
+      </button>
+    </div>
+    <p class="success-payment-message"></p>
+  </form>
 
-```typescript
+  <script>
+    var payButton = document.getElementById("pay-button");
+    var form = document.getElementById("payment-form");
+
+    Frames.init("pk_test_6ff46046-30af-41d9-bf58-929022d2cd14");
+
+    Frames.addEventHandler(
+      Frames.Events.CARD_VALIDATION_CHANGED,
+      function (event) {
+        console.log("CARD_VALIDATION_CHANGED: %o", event);
+
+        payButton.disabled = !Frames.isCardValid();
+      }
+    );
+
+    Frames.addEventHandler(
+      Frames.Events.CARD_TOKENIZED,
+      function (event) {
+        var el = document.querySelector(".success-payment-message");
+        el.innerHTML = "Card tokenization completed<br>" +
+          "Your card token is: <span class=\"token\">" + event.token + "</span>";
+      }
+    );
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      Frames.submitCard();
+    });
+  </script>
+```
+
+Similar example on React.js with `checkout-frames-react`:
+
+```typescript jsx
 import React, { useState } from 'react';
 import CheckoutForm, { CardNumberFrame, CVVFrame, ExpiryDateFrame } from 'checkout-frames-react';
 
-import styles from './CardFormExample.module.scss';
-
 const CardForm: React.FC = () => {
-  const [cardValid, setCardValid] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [cardToken, setCardToken] = useState('');
+  const [payButtonDisabled, setPayButtonDisabled] = useState(true);
 
-  const onCardValidationChanged = (valid: boolean): void => setCardValid(valid);
-  const onCardSubmitted = (): void => setLoading(true);
+  const onCardValidationChanged = (valid: boolean): void => {
+    setPayButtonDisabled(!valid);
+  }
+
   const onCardTokenized = (token: string): void => {
-    // make a request with the token
-    // ...
-    setLoading(false);
     setCardToken(token);
   };
 
@@ -39,61 +78,37 @@ const CardForm: React.FC = () => {
       <CheckoutForm
         publicKey="pk_test_6ff46046-30af-41d9-bf58-929022d2cd14"
         onCardValidationChanged={onCardValidationChanged}
-        onCardSubmitted={onCardSubmitted}
         onCardTokenized={onCardTokenized}
-        style={{
-          base: {
-            color: '#2b2b2b',
-            letterSpacing: 0,
-            padding: '12px 16px',
-            fontSize: '12px',
-            lineHeight: '18px',
-            background: '#fafafa',
-            border: '1px solid #f0f0f0',
-            borderRadius: '4px',
-          },
-          focus: {
-            borderColor: '#5e61ff',
-          },
-          invalid: {
-            color: '#f74028',
-            borderColor: '#f74028',
-          },
-        }}
       >
         <label>
-          <span className={styles.label}>Card number:</span>
-          <CardNumberFrame className={styles.field} />
+          <span>Card number:</span>
+          <CardNumberFrame />
         </label>
         <label>
-          <span className={styles.label}>Expiry date:</span>
-          <ExpiryDateFrame className={styles.field} />
+          <span>Expiry date:</span>
+          <ExpiryDateFrame />
         </label>
         <label>
-          <span className={styles.label}>CVV:</span>
-          <CVVFrame className={styles.field} />
+          <span>CVV:</span>
+          <CVVFrame />
         </label>
 
-        <button
-          type="submit"
-          className={styles.button}
-          disabled={!cardValid || loading}
-        >
-          {!loading ? 'Submit' : 'Loading...'}
+        <button type="submit" disabled={payButtonDisabled}>
+          Pay
         </button>
       </CheckoutForm>
 
-      <hr />
-      <span className={styles.label}>
+      {cardToken ? (
+        <p>
+        Card tokenization completed
+        <br />
         {`Card token: ${cardToken}`}
-      </span>
+        </p>
+      ) : null}
     </>
   );
 };
 
 export default CardForm;
 ```
-
-Take a look on the example at [src/example/CardFormExample/index.tsx](src/example/CardFormExample/index.tsx).
-
 
