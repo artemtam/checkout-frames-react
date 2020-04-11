@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CheckoutForm, { CardNumberFrame, CVVFrame, ExpiryDateFrame } from '../..';
 
-import styles from './CardFormExample.module.scss';
 
 const Index: React.FC = () => {
   const [cardValid, setCardValid] = useState(false);
@@ -45,21 +44,20 @@ const Index: React.FC = () => {
         }}
       >
         <label>
-          <span className={styles.label}>Card number:</span>
-          <CardNumberFrame className={styles.field} />
+          <span>Card number:</span>
+          <CardNumberFrame />
         </label>
         <label>
-          <span className={styles.label}>Expiry date:</span>
-          <ExpiryDateFrame className={styles.field} />
+          <span>Expiry date:</span>
+          <ExpiryDateFrame />
         </label>
         <label>
-          <span className={styles.label}>CVV:</span>
-          <CVVFrame className={styles.field} />
+          <span>CVV:</span>
+          <CVVFrame />
         </label>
 
         <button
           type="submit"
-          className={styles.button}
           disabled={!cardValid || loading}
         >
           {!loading ? 'Submit' : 'Loading...'}
@@ -67,7 +65,7 @@ const Index: React.FC = () => {
       </CheckoutForm>
 
       <hr />
-      <span className={styles.label}>
+      <span>
         {`Card token: ${cardToken}`}
       </span>
     </>

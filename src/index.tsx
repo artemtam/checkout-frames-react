@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 
 import { FramesInitProps } from './types';
 
@@ -78,7 +77,7 @@ class CheckoutForm extends Component<CheckoutFormProps> {
           e.preventDefault();
           window.Frames.submitCard();
         }}
-        className={classNames(className)}
+        className={className}
       >
         {children}
       </form>
@@ -91,7 +90,7 @@ export const CardNumberFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
   ...props
 }) => (
   <div
-    className={classNames('card-number-frame', className)}
+    className={`card-number-frame ${className}`.trim()}
     {...props}
   />
 );
@@ -102,7 +101,7 @@ export const ExpiryDateFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
   ...props
 }) => (
   <div
-    className={classNames('expiry-date-frame', className)}
+    className={`expiry-date-frame ${className}`.trim()}
     {...props}
   />
 );
@@ -112,7 +111,7 @@ export const CVVFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => (
   <div
-    className={classNames('cvv-frame', className)}
+    className={`cvv-frame ${className}`.trim()}
     {...props}
   />
 );
