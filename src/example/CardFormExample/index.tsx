@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CheckoutForm, { CardNumberFrame, CVVFrame, ExpiryDateFrame } from '../..';
 
-
 const Index: React.FC = () => {
   const [cardValid, setCardValid] = useState(false);
   const [loading, setLoading] = useState(false);

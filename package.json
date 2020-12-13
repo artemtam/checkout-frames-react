@@ -2,15 +2,16 @@
   "name": "checkout-frames-react",
   "version": "1.0.0",
   "description": "Checkout's Frames.js react-component wrapper.",
-  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
-    "build": "microbundle ./src/index.tsx",
+    "start": "microbundle --jsx React.createElement --external react ./src/index.tsx --output dist --watch",
+    "build": "microbundle --jsx React.createElement --external react ./src/index.tsx --output dist",
     "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
     "typecheck": "tsc --noEmit",
     "release": "release-it"
@@ -26,28 +27,30 @@
   },
   "homepage": "https://github.com/artemtam/checkout-frames-react#readme",
   "peerDependencies": {
-    "react": ">=16.8"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/classnames": "^2.2.10",
-    "@types/react": "^16.9.32",
-    "@types/react-test-renderer": "^16.9.2",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "@typescript-eslint/parser": "^2.27.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-react-app": "^5.2.1",
-    "eslint-plugin-flowtype": "^4.7.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "microbundle": "^0.11.0",
-    "release-it": "^13.5.2",
-    "react-test-renderer": "^16.13.1",
-    "typescript": "^3.8.3"
+    "@types/node": "^14.14.12",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-test-renderer": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "microbundle": "^0.12.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-test-renderer": "^17.0.1",
+    "release-it": "^14.2.2",
+    "typescript": "^4.1.3"
   }
 }

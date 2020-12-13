@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { FramesInitProps } from './types';
 
 interface CheckoutFormProps extends FramesInitProps {
-    onCardSubmitted?: () => void;
-    onCardValidationChanged?: (isValid: boolean) => void;
-    onCardTokenized?: (token: string) => void;
-    onCardTokenizationFailed?: () => void;
-    className?: string; // form className
+  onCardSubmitted?: () => void;
+  onCardValidationChanged?: (isValid: boolean) => void;
+  onCardTokenized?: (token: string) => void;
+  onCardTokenizationFailed?: () => void;
+  className?: string; // form className
 }
 
 class CheckoutForm extends Component<CheckoutFormProps> {
@@ -94,7 +94,6 @@ export const CardNumberFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
     {...props}
   />
 );
-
 
 export const ExpiryDateFrame: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,

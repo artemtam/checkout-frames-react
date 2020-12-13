@@ -1,7 +1,7 @@
 import { FramesObject } from './types';
 
 declare global {
-    interface Window {
-        Frames: FramesObject;
-    }
+  interface Window {
+    Frames: FramesObject;
+  }
 }
