@@ -1,5 +1,8 @@
 # checkout-frames-react ![Downloads](https://img.shields.io/npm/dt/checkout-frames-react) ![Minified and zipped size](https://img.shields.io/bundlephobia/min/checkout-frames-react)
 
+> [!WARNING]
+> **The package is deprecated**. Checkout.com now has an [official Frames.js React wrapper](https://github.com/checkout/frames-react/) – you should migrate to it.
+
 A wrapper [Frames.js by Checkout.com](https://docs.checkout.com/docs/frames) covering Frames.js with types and clean API. 
 
 - [x] Written on TypeScript
